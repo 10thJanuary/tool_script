@@ -13,3 +13,6 @@
 3. s6fdGSRwrabrant_4D.nii, 回归全脑均值, 用6mm高斯核平滑
 4. s6fdnoGSRwrabrant_4D.nii, 未回归全脑均值, 用6mm高斯核平滑
 5. wrabrant_4D.nii, 配准后的功能像
+
+### workon
+方便快捷地登录服务器

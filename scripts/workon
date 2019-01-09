@@ -1,0 +1,40 @@
+#! /bin/bash
+
+user_name="mwang"
+ssh_addr=""
+passwd=""
+
+# user name
+if [[ ! -z "$2" ]]; then
+    user_name=$2
+fi
+
+if [ "$user_name" != "mwang" ] && [ "$user_name" != "ali" ]; then
+    echo "Invalid user name: $user_name!!!"
+    exit 1
+fi
+
+
+# server address
+if [ "$1" == "liu" ]; then
+    ssh_addr=$LIUGROUP_IP
+elif [ "$1" == "brain" ]; then
+    ssh_addr=$BRAIN_IP    
+fi
+
+if [ -z "$ssh_addr" ]; then
+    echo "Invalid ssh addr parameter: $1!!!"
+    exit 1
+fi
+
+# passwd
+if [ "$user_name" == "ali" ] && [ "$1" == "brain" ]; then
+    passwd="$BRAIN_ALI_PASSWD"
+fi
+
+
+if [ -z "$passwd" ]; then
+    ssh $user_name@$ssh_addr
+else
+    sshpass -p $passwd ssh $user_name@$ssh_addr
+fi
